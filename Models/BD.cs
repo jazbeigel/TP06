@@ -11,7 +11,7 @@ public static void AgregarDeportista(Deportista dep) {
     using(SqlConnection db = new SqlConnection(_connectionString))
     {
         //EMPEZAR DESDE ACA 
-        db.Execute (SQL, new {pDeporte});
+        db.Execute (SQL, new {pDeporte, });
     }
 }
 public static void EliminarDeportista(int idDeportista)  {

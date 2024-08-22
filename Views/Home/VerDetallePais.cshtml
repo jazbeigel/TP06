@@ -1,0 +1,28 @@
+@{
+    ViewBag.Title = "Detalle País";
+    var pais = ViewBag.Pais;
+    var deportistas = ViewBag.Deportistas;
+}
+
+<h2>@pais.Nombre</h2>
+
+<p>
+    <strong>Capital:</strong> @pais.Capital<br />
+    <strong>Población:</strong> @pais.Poblacion<br />
+    <strong>Continente:</strong> @pais.Continente<br />
+</p>
+
+<h3>Deportistas de @pais.Nombre</h3>
+@if (deportistas != null && deportistas.Count > 0)
+{
+    <ul>
+        @foreach (var deportista in deportistas)
+        {
+            <li>@deportista.Nombre @deportista.Apellido - @deportista.Deporte</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay deportistas registrados para este país.</p>
+}
