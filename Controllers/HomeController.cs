@@ -20,29 +20,36 @@ public class HomeController : Controller
 
       public IActionResult Deportes()
     {
-        ViewBag.List<Deporte>;
-        return View(Deportes);
+        List<Deporte> deportes = BD.ListarDeporte();
+        ViewBag.Deportes = deportes;
+        return View();
     }
     public IActionResult Paises()
-    {
-        ViewBag.List<Pais>;
-        return View(Paises);
+    { 
+        List<Pais> paises = BD.ListarPaises();
+        ViewBag.Paises = paises;
+        return View();
     }
     public IActionResult VerDetalleDeporte(int idDeporte)
     {
-        ViewBag.Deporte = BD.VerInfoDeporte(idDeporte);
-        ViewBag.Deporistas = BD.ListarDeportistas(idDeporte);
+        Deporte deporte = BD.VerInfoDeporte(idDeporte);
+        List<Deportista> deportistas = BD.ListarDeportistas1(idDeporte);
+        ViewBag.Deporte = deporte;
+        ViewBag.Deporistas = deportistas;
         return View(DetalleDeporte);
     }
     public IActionResult VerDetallePais(int idPais)
     {
-        ViewBag.Pais = BD.VerInfoPais(idPais);
-        ViewBag.Deporistas = BD.ListarDeportistas1(idPais);
+        Pais pais = BD.VerInfoDeporte(idPais);
+        List<Deportista> deportistas = BD.ListarDeportistas1(idPais);
+        ViewBag.Pais = pais;
+        ViewBag.Deporistas = deportistas;
         return View(DetallePais);
     }
       public IActionResult VerDetalleDeportista(int idDeportista)
     {
-        ViewBag.Deportistas = BD.VerInfoDeportista;
+        List<Deportista> deportistas = BD.ListarDeportistas1(idDeportista);
+        ViewBag.Deporistas = deportistas;
         return View(DetalleDeportista);
     }
        public IActionResult AgregarDeportista()
