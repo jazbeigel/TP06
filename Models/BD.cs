@@ -10,7 +10,12 @@ public static void AgregarDeportista(Deportista dep) {
     string SQL = "INSERT INTO Deportista(idDeportista, Apellido, Nombre, FechaDeNacimiento, Foto, idPais, idDeporte) VALUES (@pidDeportista, @pApellido, @pNombre, @pFechaDeNacimiento, @pFoto, @pidPais, @pidDeporte)";
     using(SqlConnection db = new SqlConnection(_connectionString))
     {
+<<<<<<< HEAD
         db.Execute (SQL, new {pDeportista = dep.idDeportista, pApellido = dep.Apellido, pNombre = dep.Nombre, pFechaDeNacimiento = dep.FechaDeNacimiento, pFoto = depFoto, pidPais = depidPais, pidDeporte = depidDeporte});
+=======
+        //EMPEZAR DESDE ACA 
+        db.Execute (SQL, new {pDeporte, });
+>>>>>>> a165bd25250c09c6376ca0f0c6218fb6ddcb724e
     }
 }
 public static void EliminarDeportista(int idDeportista)  {

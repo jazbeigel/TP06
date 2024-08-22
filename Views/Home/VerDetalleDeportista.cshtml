@@ -1,0 +1,16 @@
+@{
+    ViewBag.Title = "Detalle Deportista";
+    var deportista = ViewBag.Deportista;
+}
+
+<h2>Detalle del Deportista</h2>
+
+<div>
+    <h3>@deportista.Nombre @deportista.Apellido</h3>
+    <p><strong>Edad:</strong> @deportista.Edad años</p>
+    <p><strong>País:</strong> @deportista.Pais.Nombre</p>
+    <p><strong>Deporte:</strong> @deportista.Deporte.Nombre</p>
+    <p><strong>Medallas Ganadas:</strong> @deportista.MedallasGanadas</p>
+</div>
+
+<a href="@Url.Action("Index", "ViewBag.Deportista")">Volver al listado</a>
