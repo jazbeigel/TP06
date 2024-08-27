@@ -23,14 +23,14 @@ public class HomeController : Controller
     {
         List<Deporte> deportes = BD.ListarDeporte();
         ViewBag.Deportes = deportes;
-        return View();
+        return View("Deportes");
     }
 
     public IActionResult Paises()
     { 
         List<Pais> paises = BD.ListarPaises();
         ViewBag.Paises = paises;
-        return View();
+        return View("Paises");
     
     }
 
