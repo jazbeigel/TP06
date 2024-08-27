@@ -13,7 +13,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    [HttpPost]
+  
     public IActionResult Index()
     {
         return View("Index");
@@ -37,33 +37,34 @@ public class HomeController : Controller
     public IActionResult VerDetalleDeporte(int idDeporte)
     {
         Deporte deporte = BD.VerInfoDeporte(idDeporte);
-        List<Deportista> deportistas = BD.ListarDeportistas1(idDeporte);
+        List<Deportista> deportistas = BD.ListarDeportistasxDeporte(idDeporte);
         ViewBag.Deporte = deporte;
         ViewBag.Deporistas = deportistas;
-        return View(DetalleDeporte);
+        return View("DetalleDeporte");
     }
 
     public IActionResult VerDetallePais(int idPais)
     {
-        Pais pais = BD.VerInfoDeporte(idPais);
-        List<Deportista> deportistas = BD.ListarDeportistas1(idPais);
+        Pais pais = BD.VerInfoPais(idPais);
+        List<Deportista> deportistas = BD.ListarDeportistasxPais(idPais);
         ViewBag.Pais = pais;
         ViewBag.Deporistas = deportistas;
-        return View(DetallePais);
+        return View("VerDetallePais");
     }
       public IActionResult VerDetalleDeportista(int idDeportista)
     {
-        List<Deportista> deportistas = BD.ListarDeportistas1(idDeportista);
+        Deportista deportistas = BD.VerInfoDeportista(idDeportista);
         ViewBag.Deporistas = deportistas;
-        return View(DetalleDeportista);
+        return View("VerDetalleDeportista");
     }
        public IActionResult AgregarDeportista()
     {
-        return View(AgregarDeportistas);
+        return View("AgregarDeportistas");
     }
     [HttpPost]
     public IActionResult GuardarDeportista(Deportista dep)
     {
+        
         return View(Index);
     }
     public IActionResult EliminarDeportista(int idCandidato)
@@ -72,22 +73,19 @@ public class HomeController : Controller
     }
      public IActionResult Creditos()
     {
-        return View(Creditos);
-        ViewBag.Pais = BD.VerInfoPais(idPais);
-        ViewBag.Deportistas = BD.ListarDeportistas1(idPais);
-        return View(DetallePais);
+        return View("Creditos");
     }
 
-    public IActionResult VerDetalleDeportista(int idDeportista)
+    public IActionResult VerDetallesDeportista(int idDeportista)
     {
         ViewBag.Deportista = BD.VerInfoDeportista(idDeportista);
-        return View(DetalleDeportista);
+        return View("VerDetalleDeportista");
     }
 
-    public IActionResult AgregarDeportista()
+    public IActionResult AgregarDeportistas()
     {
         ViewBag.ListaPaises = BD.ListarPaises();
-        ViewBag.ListaDeportes = BD.ListarDeportes();
-        return View(DetalleDeportista);
+        ViewBag.ListaDeportes = BD.ListarDeporte(); 
+        return View("VerDetalleDeportista");
     }
 }
