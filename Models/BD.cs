@@ -52,6 +52,7 @@ public static Deportista VerInfoDeportista(int idDeportista) {
 }
 public static List<Pais> ListarPaises() {
         List<Pais> paises = new List<Pais>();
+        
         string sql= " SELECT * FROM Paises";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
