@@ -1,2 +1,25 @@
- 
+@{
+    var deportes = ViewBag.Deportes as List<Deporte>;
+}
+
+<ul class="list-group list-group-flush">
+    @if (deportes != null && deportes.Any())
+    {
+        foreach (var deporte in deportes)
+        {
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">@deporte.Nombre</h5>
+                    <small>@deporte.idDeporte</small> 
+                </div>
+                <img class="mb-1">@deporte.Foto/> 
+                <small>Detalles adicionales</small>
+            </li>
+        }
+    }
+    else
+    {
+        <li class="list-group-item">No hay deportes disponibles.</li>
+    }
+</ul>
  

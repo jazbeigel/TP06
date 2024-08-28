@@ -5,7 +5,7 @@ namespace TP06.Models;
 public class BD{
 
     private static string _connectionString = @"Sever=localhost; 
-    DataBase=BD.TP06; Trusted_Connection=True;";
+    DataBase=JJOO TP6; Trusted_Connection=True;";
 
     public static void AgregarDeportista(Deportista dep) {
         string SQL = "INSERT INTO Deportista(idDeportista, Apellido, Nombre, FechaDeNacimiento, Foto, idPais, idDeporte) VALUES (@pidDeportista, @pApellido, @pNombre, @pFechaDeNacimiento, @pFoto, @pidPais, @pidDeporte)";
@@ -80,7 +80,7 @@ public class BD{
         return deportistas;
     }
     public static List<Deporte> ListarDeporte() {
-            List<Deporte> deportes = new List<Deporte>();
+            List<Deporte> deportes = null;
             string sql= " SELECT * FROM Deportes";
             using(SqlConnection db = new SqlConnection(_connectionString))
             {
