@@ -1,0 +1,47 @@
+@{
+    ViewBag.Title = "Detalle Deporte";
+    var deporte = ViewBag.Deporte as TP06.Models.Deporte;
+    var deportistas = ViewBag.Deporistas as List<TP06.Models.Deportista>;
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h2>@deporte.Nombre</h2>
+            <p>ID Deporte: @deporte.idDeporte</p>
+            <img src="@deporte.Foto" class="card-img-top" alt="@deporte.Foto">
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <h3>Deportistas Participantes</h3>
+        </div>
+    </div>
+    
+    <div class="row">
+        @if (deportistas != null && deportistas.Count > 0)
+        {
+            foreach (var deportista in deportistas)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@deportista.Foto" class="card-img-top" alt="@deportista.Nombre">
+                        <div class="card-body">
+                            <h5 class="card-title">@deportista.Nombre @deportista.Apellido</h5>
+                            <a href="@Url.Action("VerDetalleDeportista", "Home", new { idDeportista = deportista.idDeportista })" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col">
+                <p>No hay deportistas registrados en este deporte.</p>
+            </div>
+        }
+    </div>
+</div>
+

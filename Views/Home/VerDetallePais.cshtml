@@ -1,28 +1,46 @@
 @{
     ViewBag.Title = "Detalle País";
-    var pais = ViewBag.Pais;
-    var deportistas = ViewBag.Deportistas;
 }
 
-<h2>@pais.Nombre</h2>
-
-<p>
-    <strong>Capital:</strong> @pais.Capital<br />
-    <strong>Población:</strong> @pais.Poblacion<br />
-    <strong>Continente:</strong> @pais.Continente<br />
-</p>
-
-<h3>Deportistas de @pais.Nombre</h3>
-@if (deportistas != null && deportistas.Count > 0)
-{
-    <ul>
-        @foreach (var deportista in deportistas)
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h2>@ViewBag.Pais.Nombre</h2>
+            <p>ID País: @ViewBag.Pais.idPais</p>
+            <img class="mb-1" src="@ViewBag.Pais.Bandera">
+           
+            <hr>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+            <h3>Deportistas Representantes</h3>
+        </div>
+    </div>
+    
+    <div class="row">
+        @if (ViewBag.Deporistas != null && ViewBag.Deporistas.Count > 0)
         {
-            <li>@deportista.Nombre @deportista.Apellido - @deportista.Deporte</li>
+            foreach (var deportista in  ViewBag.Deporistas)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <img src="@deportista.Foto" class="card-img-top" alt="@deportista.Nombre">
+                        <div class="card-body">
+                            <h5 class="card-title">@deportista.Nombre @deportista.Apellido</h5>
+                            <a href="@Url.Action("VerDetalleDeportista", "Home", new { idDeportista = deportista.idDeportista })" class="btn btn-primary">Ver Detalles</a>
+                        </div>
+                    </div>
+                </div>
+            }
         }
-    </ul>
-}
-else
-{
-    <p>No hay deportistas registrados para este país.</p>
-}
+        else
+        {
+            <div class="col">
+                <p>No hay deportistas registrados en este país.</p>
+            </div>
+        }
+    </div>
+</div>
+

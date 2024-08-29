@@ -1,16 +1,20 @@
 @{
     ViewBag.Title = "Detalle Deportista";
-    var deportista = ViewBag.Deportista;
+    var deportista = ViewBag.Deporistas as TP06.Models.Deportista;
 }
 
-<h2>Detalle del Deportista</h2>
-
-<div>
-    <h3>@deportista.Nombre @deportista.Apellido</h3>
-    <p><strong>Edad:</strong> @deportista.Edad años</p>
-    <p><strong>País:</strong> @deportista.Pais.Nombre</p>
-    <p><strong>Deporte:</strong> @deportista.Deporte.Nombre</p>
-    <p><strong>Medallas Ganadas:</strong> @deportista.MedallasGanadas</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@deportista.Foto"  class="card-img-top" alt="@deportista.Nombre">
+        </div>
+        <div class="col-md-8">
+            <h2>@deportista.Nombre @deportista.Apellido</h2>
+            <p>ID Deportista: @deportista.idDeportista</p>
+            <p>Fecha de Nacimiento: @deportista.FechaNacimiento.ToShortDateString()</p>
+            <hr>
+            <a href="@Url.Action("VerDetalleDeporte", "Home", new { idDeporte = deportista.idDeporte })" class="btn btn-primary">Ver Deporte</a>
+            <a href="@Url.Action("VerDetallePais", "Home", new { idPais = deportista.idPais })" class="btn btn-secondary">Ver País</a>
+        </div>
+    </div>
 </div>
-
-<a href="@Url.Action("Index", "ViewBag.Deportista")">Volver al listado</a>
